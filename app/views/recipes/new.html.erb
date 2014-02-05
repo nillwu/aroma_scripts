@@ -1,0 +1,26 @@
+<% provide(:title, 'New Script') %>
+<h1>New Script</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@recipe) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.label :植物油 %>
+      <%= select_tag(:recipe,options_from_collection_for_select(@baseoils,:id, :name)) %>
+      
+      <%= f.label :ML %>
+      <%= f.text_field :ml %>
+
+      <%= f.label :濃度 %>
+      <%= f.text_field :mol %>
+
+      <%= f.label :Remark %>
+      <%= f.text_field :remark %>
+
+
+      <%= f.submit "Create New Script", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
