@@ -10,6 +10,27 @@
       <%= f.label :植物油 %>
       <%= select_tag(:recipe,options_from_collection_for_select(@baseoils,:id, :name)) %>
       
+      <%= f.label :aroma_effect_id %>
+      
+      <%= f.fields_for (:AromaEffect) do |builder| %>
+      <%= builder.collection_select :armoa_effect_id, AromaEffect.find(:all), :id, :name,
+        {include_blank: true},
+        { data: {
+            dynamic_selectable_url: ecos_path(':armoa_effect_id'),
+            dynamic_selectable_target: '#recipe_Eco_eco_id'
+          }
+        } %>
+      <% end %>
+      <%
+      logger.debug "New recipe: #{@recipe.attributes.inspect}"
+      logger.debug "recipe should be valid: #{@recipe.valid?}"
+      %>
+      
+      <%= debug @recipe %>
+      <%= f.label :eco_id %><br>
+      <%= f.fields_for (:Eco) do |builder| %>
+      <%= builder.collection_select :eco_id, @recipe.aroma_effects.try(:ecos) || [], :id, :name, :include_blank => true  %>
+      <% end %>
       <%= f.label :ML %>
       <%= f.text_field :ml %>
 

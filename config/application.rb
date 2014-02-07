@@ -7,9 +7,20 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
+###for logger
+require 'rails/all'
+# add these line for log4r
+require 'log4r'
+require 'log4r/yamlconfigurator'
+require 'log4r/outputter/datefileoutputter'
+include Log4r
+###logger end
+
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env)
+#Bundler.require(:default, Rails.env)
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module AromaScripts
   class Application < Rails::Application
@@ -26,5 +37,10 @@ module AromaScripts
     # config.i18n.default_locale = :de
     I18n.enforce_available_locales = true
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    
+    log4r_config= YAML.load_file(File.join(File.dirname(__FILE__),"log4r.yml"))
+    YamlConfigurator.decode_yaml( log4r_config['log4r_config'] )
+    config.logger = Log4r::Logger[Rails.env]
+    
   end
 end

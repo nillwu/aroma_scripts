@@ -2,8 +2,10 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    
-    
+    make_eco
+    make_baseoil
+    make_effect
+    make_effect_ecos
   end
 end
 
@@ -24,19 +26,33 @@ def make_users
   end
 end
 
-def make_microposts
-  users = User.all(limit: 6)
+def make_eco
   50.times do
-    content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(content: content) }
+    econtent = Faker::Name.name
+    Eco.create!(name: econtent) 
   end
 end
 
-def make_relationships
-  users = User.all
-  user  = users.first
-  followed_users = users[2..50]
-  followers      = users[3..40]
-  followed_users.each { |followed| user.follow!(followed) }
-  followers.each      { |follower| follower.follow!(user) }
+def make_effect
+  50.times do
+    efcontent = Faker::Name.name
+    AromaEffect.create!(name: efcontent) 
+  end
+end
+
+def make_baseoil
+  50.times do
+    bcontent = Faker::Name.name
+    Baseoil.create!(name: bcontent) 
+  end
+end
+
+def make_effect_ecos
+  effects = AromaEffect.all(limit: 12)
+  ecos = Eco.all(limit: 12)
+  effects.each do |effect|
+      ecos.each do |eco|
+        EffectEco.create!(eco_id: eco.id, aroma_effect_id: effect.id, elevel: 3) 
+      end
+  end
 end
