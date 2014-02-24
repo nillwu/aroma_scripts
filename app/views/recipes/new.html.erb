@@ -26,33 +26,11 @@
       <div class = "span1">xx</div>
       <div class = "span1">xx</div>
     </div>
-   <div id="dialog" class="modal-dialog" title="This is the title" style="display:none;">
-      <p>Question?</p>
-      <label for="yes">Yes!</label><input type="radio" id="yes" value="yes" name="question"><br>
-      <label for="no">No!</label><input type="radio" id="no" value="no" name="question">
-      <div class="btn-group">
-        <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
-        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
-          <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
-          <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="i"></i> Make admin</a></li>
-        </ul>
-
-      </div>
-      <div class="btn-group" data-toggle="buttons-radio">
-        <button type="button" name="att" class="btn btn-primary active">Present</button>
-        <button type="button" name="att" class="btn btn-primary">Absent</button>
-        <button type="button" name="att" class="btn btn-primary">Leave</button>
-      </div>
-      
+   <div id="dialog" class="modal-dialog" title="請選擇精油" style="display:none;">
+      <p>請選擇精油?</p>
+      <label for="yes"><input type="radio" id="yes" value="yes" name="question" > Yes </label> <br>
+      <label for="no"><input type="radio" id="no" value="no" name="question" > No </label>
     </div>
-    
-    <div id="dialogx" title="Dialog Title" style="display:none;">
-        <p>Dialog box content will goes here.</p>
-  </div>
    
    
     <fieldset id="addDiv">
@@ -65,7 +43,7 @@
     </fieldset>
    <div class="row">
       <div class="span12">
-        <%= f.button :"add oil",   id: "addoils", class: "btn btn-small"%>
+        <%= f.button :"新增藥學屬性",   id: "addoils", class: "btn btn-small"%>
       </div>
     </div>
     
