@@ -1,13 +1,17 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
+#jquery bootstrap combine
+gem 'jquery-ui-bootstrap-rails'
+
 gem 'rails', '4.0.2'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass' , '2.3.2.0'
 gem 'bcrypt-ruby'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bootstrap-will_paginate' , '0.0.9'
 gem 'log4r', '1.1.9'  
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

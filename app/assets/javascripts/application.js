@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.button
+//= require jquery.ui.dialog
+
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 
-//= require turbolinks
 //= require dynamic_selectable
 //= require init

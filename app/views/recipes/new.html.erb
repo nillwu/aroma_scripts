@@ -1,11 +1,77 @@
 <% provide(:title, 'New Script') %>
 <h1>New Script</h1>
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@recipe) do |f| %>
 
+<%= form_for(@recipe, :method => :post, :remote => true)  do |f|  %>
+  <div class="row">
+    <div class="span1">
       <%= f.label :name %>
+    </div>
+    <div class="span2">
       <%= f.text_field :name %>
+    </div>
+    <div class="span8">
+    </div>
+  </div>
+   <div class="row">
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+      <div class = "span1">xx</div>
+    </div>
+   <div id="dialog" class="modal-dialog" title="This is the title" style="display:none;">
+      <p>Question?</p>
+      <label for="yes">Yes!</label><input type="radio" id="yes" value="yes" name="question"><br>
+      <label for="no">No!</label><input type="radio" id="no" value="no" name="question">
+      <div class="btn-group">
+        <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> User</a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+          <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+          <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="i"></i> Make admin</a></li>
+        </ul>
+
+      </div>
+      <div class="btn-group" data-toggle="buttons-radio">
+        <button type="button" name="att" class="btn btn-primary active">Present</button>
+        <button type="button" name="att" class="btn btn-primary">Absent</button>
+        <button type="button" name="att" class="btn btn-primary">Leave</button>
+      </div>
+      
+    </div>
+    
+    <div id="dialogx" title="Dialog Title" style="display:none;">
+        <p>Dialog box content will goes here.</p>
+  </div>
+   
+   
+    <fieldset id="addDiv">
+      <div class="row">
+        <div class="span6">藥學屬性</div>
+        <div class="span2">精油</div>
+        <div class="span2">比例</div>
+        <div class="span2">滴數</div>
+      </div>
+    </fieldset>
+   <div class="row">
+      <div class="span12">
+        <%= f.button :"add oil",   id: "addoils", class: "btn btn-small"%>
+      </div>
+    </div>
+    
+  <div class="row">
+    <div class="span6 offset3">
+     
       
       <%= f.label :植物油 %>
       <%= select_tag(:recipe,options_from_collection_for_select(@baseoils,:id, :name)) %>
@@ -21,27 +87,28 @@
           }
         } %>
       <% end %>
+    </div>
+   
+    
+    <div class="span6 offset3">
+      
       <%
       logger.debug "New recipe: #{@recipe.attributes.inspect}"
       logger.debug "recipe should be valid: #{@recipe.valid?}"
       %>
       
-      <%= debug @recipe %>
       <%= f.label :eco_id %><br>
       <%= f.fields_for (:Eco) do |builder| %>
       <%= builder.collection_select :eco_id, @recipe.aroma_effects.try(:ecos) || [], :id, :name, :include_blank => true  %>
       <% end %>
       <%= f.label :ML %>
       <%= f.text_field :ml %>
-
       <%= f.label :濃度 %>
       <%= f.text_field :mol %>
 
       <%= f.label :Remark %>
       <%= f.text_field :remark %>
-
-
       <%= f.submit "Create New Script", class: "btn btn-large btn-primary" %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

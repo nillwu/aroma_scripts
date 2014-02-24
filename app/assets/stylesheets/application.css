@@ -10,4 +10,10 @@
  *
  *= require_self
  *= require_tree .
+ *= require ui-bootstrap/jquery-ui-bootstrap
+ */
+ 
+/*
+ *= require jquery.ui.button
+ *= require jquery.ui.dialog
  */

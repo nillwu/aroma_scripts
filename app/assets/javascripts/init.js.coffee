@@ -1,5 +1,6 @@
 window.initApp = ->
-  $('select[data-dynamic-selectable-url][data-dynamic-selectable-target]').dynamicSelectable()
+  $('select[data-dynamic-selectable-url]').dynamicSelectable()
+  #$('#addoils').addSelectItem()
 
 document.addEventListener 'page:load', initApp
 

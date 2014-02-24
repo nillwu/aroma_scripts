@@ -10,4 +10,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
+  
+  def create
+    @todo_item = TodoItem.create(params[:todo_item])
+  end
 end

@@ -4,11 +4,13 @@ AromaScripts::Application.routes.draw do
   resources :recipes
   
   get ':aroma_effect_id/ecos', to: 'ecos#index', as: 'ecos'
+  
   namespace :dynamic_select do
     get ':country_id/states', to: 'states#index', as: 'states'
   end
   
   root to: 'static_pages#home'
+  match '/aroma_effect',  to: 'aroma_effects#index',  via: 'get'
   match '/newscript',  to: 'recipes#new',            via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
